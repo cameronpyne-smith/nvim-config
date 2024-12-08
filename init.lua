@@ -1,2 +1,2 @@
 require("basic")
-require("package-manager.lazy")
+require("plugin-manager.lazy")
