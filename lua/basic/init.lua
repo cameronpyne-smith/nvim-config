@@ -4,3 +4,4 @@ vim.g.maplocalleader = ' '
 
 require 'basic.options'
 require 'basic.remap'
+require 'basic.autocommands'
