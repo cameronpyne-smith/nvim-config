@@ -1,7 +1,8 @@
+-- File Explorer
 vim.keymap.set("n", "<leader>jj", vim.cmd.Ex)
 
--- [[ Basic Keymaps ]]
---  See `:help vim.keymap.set()`
+-- Open error in new buffer, twice to go to buffer to copy error
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { noremap = true, silent = true, buffer = bufnr })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
