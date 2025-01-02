@@ -12,7 +12,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Commenting
+-- Commenting set connstring for gc
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "json",
+    command = "setlocal commentstring=//\\ %s",
+})
+
 -- vim.api.nvim_create_autocmd("FileType", {
 --     pattern = "python",
 --     command = "setlocal commentstring=#\\ %s",
