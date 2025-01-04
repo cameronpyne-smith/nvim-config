@@ -32,7 +32,10 @@ vim.api.nvim_create_autocmd("FileType", {
 -- })
 
 -- NOTE: RUN ON SAVE
-vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = "*.js",
-	command = "!node %",
-})
+-- Enable with: vim.g.enable_run_on_save = true
+if vim.g.enable_run_on_save then
+	vim.api.nvim_create_autocmd("BufWritePost", {
+		pattern = "*.js",
+		command = "!node %",
+	})
+end
