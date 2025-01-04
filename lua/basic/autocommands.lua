@@ -1,7 +1,7 @@
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
--- Highlight when yanking (copying) text
+-- NOTE: YANK HIGHLIGHT
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -12,10 +12,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Commenting set connstring for gc
+-- NOTE: COMMENTING
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "json",
-    command = "setlocal commentstring=//\\ %s",
+	pattern = "json",
+	command = "setlocal commentstring=//\\ %s",
 })
 
 -- vim.api.nvim_create_autocmd("FileType", {
@@ -30,3 +30,9 @@ vim.api.nvim_create_autocmd("FileType", {
 --     pattern = "html",
 --     command = "setlocal commentstring=<!--\\ %s\\ -->",
 -- })
+
+-- NOTE: RUN ON SAVE
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = "*.js",
+	command = "!node %",
+})
