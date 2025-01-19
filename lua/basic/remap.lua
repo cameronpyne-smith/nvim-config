@@ -34,5 +34,22 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
--- NOTE: Add remaps from plugins init.lua for telescope
--- NOTE: Add quicksort Ctrl+Q forward backward commands :cnext and :cprev - maybe Ctrl+J and Ctrl+K
+-- Switch to the next buffer
+vim.keymap.set("n", "<leader>kk", ":bnext<CR>", { noremap = true, silent = true })
+
+-- Switch to the previous buffer
+vim.keymap.set("n", "<leader>kj", ":bprev<CR>", { noremap = true, silent = true })
+
+-- Toggle between the last two buffers
+vim.keymap.set("n", "<leader>kq", ":b#<CR>", { noremap = true, silent = true })
+
+-- TODO: Doesn't work very well
+-- Close the terminal buffer, ensuring the main window is unaffected
+vim.keymap.set("n", "<leader>kd", function()
+	-- Switch to the previous buffer before closing the terminal
+	vim.cmd("bprevious")
+	vim.cmd("bd!")
+end, { noremap = true, silent = true })
+
+-- TODO: Add remaps from plugins init.lua for telescope
+-- TODO: Add quicksort Ctrl+Q forward backward commands :cnext and :cprev - maybe Ctrl+J and Ctrl+K
