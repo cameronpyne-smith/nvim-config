@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- })
 
 -- NOTE: RUN ON SAVE
-vim.g.enable_run_on_save = true
+vim.g.enable_run_on_save = false
 
 if vim.g.enable_run_on_save then
 	vim.api.nvim_create_autocmd("BufWritePost", {
@@ -78,3 +78,50 @@ if vim.g.enable_run_tests_on_save then
 		end,
 	})
 end
+
+--NOTE: RUN CYPRESS TESTS ON SAVE
+
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--     pattern = "*.feature",
+--     callback = function()
+--             local file = vim.fn.expand("%:p") -- Get full file path
+--             local escaped_file = vim.fn.shellescape(file) -- Properly escape the file path
+--
+--             -- Run Cypress directly inside the terminal and keep it open
+--             local cmd = "cmd /k npx cypress run --headed --no-exit --spec " .. escaped_file
+--
+--             -- Open a horizontal split and run the command inside a new terminal
+--             vim.cmd("split") -- Open horizontal split
+--             vim.cmd("resize 10") -- Set terminal height
+--             vim.cmd("terminal " .. cmd) -- Run Cypress in terminal
+--             vim.cmd("startinsert") -- Enter insert mode so it interacts properly
+--     end,
+-- })
+
+--NOTE: Duplicate File
+vim.keymap.set("n", "<leader>du", function()
+       local filepath = vim.fn.expand("%:p") -- full path
+       local dir = vim.fn.expand("%:p:h") -- directory
+       local filename = vim.fn.expand("%:t:r") -- name without ext
+       local ext = vim.fn.expand("%:e") -- extension
+
+       local default = filename .. "_copy." .. ext
+
+       -- Prompt user for a new name (in same directory)
+       vim.ui.input({ prompt = "Duplicate as: ", default = default }, function(input)
+               if not input or input == "" then
+                       print("Cancelled")
+                       return
+               end
+
+               local newpath = dir .. "/" .. input
+
+               -- Perform the copy
+               vim.fn.system({ "cp", filepath, newpath })
+
+               -- Open duplicated file
+               vim.cmd("edit " .. newpath)
+
+               print("Duplicated → " .. input)
+       end)
+end, { desc = "Duplicate file" })
