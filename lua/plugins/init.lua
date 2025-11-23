@@ -579,4 +579,17 @@ return {
 			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
+{
+  "nvim-treesitter/nvim-treesitter",
+  opts = { ensure_installed = { "svelte" } },
+},
+{
+  "neovim/nvim-lspconfig",
+},
+{
+  "neovim/nvim-lspconfig",
+},
+{
+  "conform.nvim",
+}
 }

@@ -51,5 +51,7 @@ vim.keymap.set("n", "<leader>kd", function()
 	vim.cmd("bd!")
 end, { noremap = true, silent = true })
 
+vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+
 -- TODO: Add remaps from plugins init.lua for telescope
--- TODO: Add quicksort Ctrl+Q forward backward commands :cnext and :cprev - maybe Ctrl+J and Ctrl+K
+-- TODO: Add quicksort Ctrl+Q forward backward commands :cnext and :cprev - maybe Ctrl+J and Ctrl+K, (It's already Ctrl+q, and Ctrl+j/k moves between the buffers) 
