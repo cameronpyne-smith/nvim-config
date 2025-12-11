@@ -11,6 +11,8 @@ require("nvim-treesitter.configs").setup({
 		"typescript",
 		"c_sharp",
 		"html",
+		"rust",
+		"toml",
 	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
