@@ -579,17 +579,28 @@ return {
 			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
-{
-  "nvim-treesitter/nvim-treesitter",
-  opts = { ensure_installed = { "svelte" } },
-},
-{
-  "neovim/nvim-lspconfig",
-},
-{
-  "neovim/nvim-lspconfig",
-},
-{
-  "conform.nvim",
-}
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = { ensure_installed = { "svelte" } },
+	},
+	{
+		"neovim/nvim-lspconfig",
+	},
+	{
+		"neovim/nvim-lspconfig",
+	},
+	{
+		"conform.nvim",
+	},
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
+	},
 }

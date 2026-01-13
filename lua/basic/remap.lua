@@ -1,5 +1,5 @@
 -- File Explorer
-vim.keymap.set("n", "<leader>jj", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>jj", "<cmd>Oil<CR>")
 
 -- Open error in new buffer, twice to go to buffer to copy error
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { noremap = true, silent = true, buffer = bufnr })
@@ -54,4 +54,4 @@ end, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 
 -- TODO: Add remaps from plugins init.lua for telescope
--- TODO: Add quicksort Ctrl+Q forward backward commands :cnext and :cprev - maybe Ctrl+J and Ctrl+K, (It's already Ctrl+q, and Ctrl+j/k moves between the buffers) 
+-- TODO: Add quicksort Ctrl+Q forward backward commands :cnext and :cprev - maybe Ctrl+J and Ctrl+K, (It's already Ctrl+q, and Ctrl+j/k moves between the buffers)
