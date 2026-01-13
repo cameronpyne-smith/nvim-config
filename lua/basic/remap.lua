@@ -55,3 +55,7 @@ vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Signatur
 
 -- TODO: Add remaps from plugins init.lua for telescope
 -- TODO: Add quicksort Ctrl+Q forward backward commands :cnext and :cprev - maybe Ctrl+J and Ctrl+K, (It's already Ctrl+q, and Ctrl+j/k moves between the buffers)
+
+-- Terminal
+
+vim.keymap.set("n", "<leader>tt", "<cmd>belowright 15split | terminal<CR>", { desc = "Open terminal at bottom" })
