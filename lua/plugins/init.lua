@@ -539,7 +539,13 @@ return {
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
+		opts = {
+			signs = true,
+			keywords = {
+				DONE = { icon = "✔ ", color = "hint" },
+				WARN = { icon = "⚠️", color = "warning" },
+			},
+		},
 	},
 
 	{ -- Collection of various small independent plugins/modules
@@ -591,6 +597,16 @@ return {
 	},
 	{
 		"conform.nvim",
+	},
+	{
+		"nvim-mini/mini.icons",
+	},
+	{
+		"nvim-mini/mini.icons",
+		lazy = false, -- make sure it loads before oil
+		config = function()
+			require("mini.icons").setup()
+		end,
 	},
 	{
 		"stevearc/oil.nvim",
