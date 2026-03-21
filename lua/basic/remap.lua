@@ -11,6 +11,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -52,11 +53,31 @@ vim.keymap.set("n", "<leader>kd", function()
 	vim.cmd("bd!")
 end, { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-
 -- TODO: Add remaps from plugins init.lua for telescope
 -- TODO: Add quicksort Ctrl+Q forward backward commands :cnext and :cprev - maybe Ctrl+J and Ctrl+K, (It's already Ctrl+q, and Ctrl+j/k moves between the buffers)
 
 -- Terminal
-
 vim.keymap.set("n", "<leader>tt", "<cmd>belowright 15split | terminal<CR>", { desc = "Open terminal at bottom" })
+
+-- Clipboard
+vim.keymap.set("v", "p", '"_dP', { desc = "Paste over text without yanking deleted text" })
+
+-- Navigation
+-- Keep cursor centered
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+-- Move selected lines
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- Better line join
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- TODO: Try out
+-- replace word under cursor
+-- vim.keymap.set(
+--   "n",
+--   "<leader>s",
+--   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
+-- )
