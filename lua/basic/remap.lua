@@ -61,6 +61,11 @@ vim.keymap.set("n", "<leader>tt", "<cmd>belowright 15split | terminal<CR>", { de
 
 -- Clipboard
 vim.keymap.set("v", "p", '"_dP', { desc = "Paste over text without yanking deleted text" })
+vim.keymap.set("n", "<leader>yd", function()
+	local path = vim.fn.expand("%:p:h")
+	vim.fn.setreg("+", path)
+	print("Copied dir: " .. path)
+end, { desc = "Copy current directory" })
 
 -- Navigation
 -- Keep cursor centered
