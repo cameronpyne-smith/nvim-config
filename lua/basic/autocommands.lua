@@ -56,7 +56,7 @@ if vim.g.enable_run_on_save then
 end
 
 -- NOTE: RUN TESTS ON SAVE
-vim.g.enable_run_tests_on_save = true
+vim.g.enable_run_tests_on_save = false
 
 if vim.g.enable_run_tests_on_save then
 	vim.api.nvim_create_autocmd("BufWritePost", {
@@ -100,28 +100,28 @@ end
 
 --NOTE: Duplicate File
 vim.keymap.set("n", "<leader>du", function()
-       local filepath = vim.fn.expand("%:p") -- full path
-       local dir = vim.fn.expand("%:p:h") -- directory
-       local filename = vim.fn.expand("%:t:r") -- name without ext
-       local ext = vim.fn.expand("%:e") -- extension
+	local filepath = vim.fn.expand("%:p") -- full path
+	local dir = vim.fn.expand("%:p:h") -- directory
+	local filename = vim.fn.expand("%:t:r") -- name without ext
+	local ext = vim.fn.expand("%:e") -- extension
 
-       local default = filename .. "_copy." .. ext
+	local default = filename .. "_copy." .. ext
 
-       -- Prompt user for a new name (in same directory)
-       vim.ui.input({ prompt = "Duplicate as: ", default = default }, function(input)
-               if not input or input == "" then
-                       print("Cancelled")
-                       return
-               end
+	-- Prompt user for a new name (in same directory)
+	vim.ui.input({ prompt = "Duplicate as: ", default = default }, function(input)
+		if not input or input == "" then
+			print("Cancelled")
+			return
+		end
 
-               local newpath = dir .. "/" .. input
+		local newpath = dir .. "/" .. input
 
-               -- Perform the copy
-               vim.fn.system({ "cp", filepath, newpath })
+		-- Perform the copy
+		vim.fn.system({ "cp", filepath, newpath })
 
-               -- Open duplicated file
-               vim.cmd("edit " .. newpath)
+		-- Open duplicated file
+		vim.cmd("edit " .. newpath)
 
-               print("Duplicated → " .. input)
-       end)
+		print("Duplicated → " .. input)
+	end)
 end, { desc = "Duplicate file" })
