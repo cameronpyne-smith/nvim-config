@@ -66,6 +66,11 @@ vim.keymap.set("n", "<leader>yd", function()
 	vim.fn.setreg("+", path)
 	print("Copied dir: " .. path)
 end, { desc = "Copy current directory" })
+vim.keymap.set("n", "<leader>yp", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+	print("Copied: " .. path)
+end, { desc = "Copy file path" })
 
 -- Navigation
 -- Keep cursor centered
