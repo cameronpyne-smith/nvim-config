@@ -310,6 +310,8 @@ return {
 				-- ts_ls = {},
 				--
 
+				jsonls = {},
+
 				gopls = {
 					settings = {
 						gopls = {
