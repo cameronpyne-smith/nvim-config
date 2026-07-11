@@ -13,6 +13,10 @@ require("nvim-treesitter.configs").setup({
 		"html",
 		"rust",
 		"toml",
+		"go",
+		"gomod",
+		"gosum",
+		"gowork",
 	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)

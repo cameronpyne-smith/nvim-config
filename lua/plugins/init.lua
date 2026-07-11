@@ -310,6 +310,16 @@ return {
 				-- ts_ls = {},
 				--
 
+				gopls = {
+					settings = {
+						gopls = {
+							gofumpt = true,
+							staticcheck = true,
+							analyses = { unusedparams = true },
+						},
+					},
+				},
+
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes = { ...},
@@ -339,6 +349,8 @@ return {
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"gofumpt",
+				"goimports",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -391,6 +403,7 @@ return {
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
+				go = { "goimports", "gofumpt" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
