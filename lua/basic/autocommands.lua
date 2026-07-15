@@ -12,6 +12,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
+	desc = "Restore bar cursor for the terminal on exit",
+	group = vim.api.nvim_create_augroup("restore-terminal-cursor", { clear = true }),
+	callback = function()
+		vim.opt.guicursor = "a:ver25-blinkon500"
+	end,
+})
+
 -- NOTE: COMMENTING
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "json",
