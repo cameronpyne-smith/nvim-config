@@ -15,6 +15,11 @@ return {
 		build = ":TSUpdate",
 	},
 
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		opts = { max_lines = 3 },
+	},
+
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
