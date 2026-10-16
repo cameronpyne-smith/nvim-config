@@ -3,7 +3,7 @@ vim.keymap.set("n", "<leader>jj", "<cmd>Oil<CR>")
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
 
 -- Open error in new buffer, twice to go to buffer to copy error
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { noremap = true, silent = true, buffer = bufnr })
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { silent = true })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
