@@ -74,3 +74,5 @@ vim.opt.winborder = "rounded"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevelstart = 99
+
+vim.diagnostic.config({ severity_sort = true })
