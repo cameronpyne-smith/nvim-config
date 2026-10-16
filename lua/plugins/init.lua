@@ -1,5 +1,10 @@
 return {
-	{ "nvim-telescope/telescope.nvim" },
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		},
+	},
 	{ "mbbill/undotree" },
 	{ "tpope/vim-fugitive" },
 
