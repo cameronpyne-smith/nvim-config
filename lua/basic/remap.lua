@@ -45,13 +45,10 @@ vim.keymap.set("n", "<leader>kj", ":bprev<CR>", { noremap = true, silent = true 
 -- Toggle between the last two buffers
 vim.keymap.set("n", "<leader>kq", ":b#<CR>", { noremap = true, silent = true })
 
--- TODO: Doesn't work very well
--- Close the terminal buffer, ensuring the main window is unaffected
+-- Close the current buffer, keeping the window layout
 vim.keymap.set("n", "<leader>kd", function()
-	-- Switch to the previous buffer before closing the terminal
-	vim.cmd("bprevious")
-	vim.cmd("bd!")
-end, { noremap = true, silent = true })
+	require("mini.bufremove").delete(0, vim.bo.buftype == "terminal")
+end, { desc = "Delete buffer" })
 
 -- TODO: Add remaps from plugins init.lua for telescope
 
