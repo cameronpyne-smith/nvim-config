@@ -564,6 +564,8 @@ return {
 			-- - sr)'  - [S]urround [R]eplace [)] [']
 			require("mini.surround").setup()
 
+			require("mini.icons").setup()
+
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
@@ -584,31 +586,15 @@ return {
 		end,
 	},
 	{
-		"neovim/nvim-lspconfig",
-	},
-	{
-		"neovim/nvim-lspconfig",
-	},
-	{
-		"conform.nvim",
-	},
-	{
-		"nvim-mini/mini.icons",
-	},
-	{
-		"nvim-mini/mini.icons",
-		lazy = false, -- make sure it loads before oil
-		config = function()
-			require("mini.icons").setup()
-		end,
-	},
-	{
 		"stevearc/oil.nvim",
 		---@module 'oil'
 		---@type oil.SetupOpts
-		opts = {},
+		opts = {
+			view_options = { show_hidden = true },
+			icon_provider = "mini.icons",
+		},
 		-- Optional dependencies
-		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+		dependencies = { "echasnovski/mini.nvim" },
 		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
 		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
 		lazy = false,
@@ -616,7 +602,7 @@ return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		-- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" }, -- if you use standalone mini plugins
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
 		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
