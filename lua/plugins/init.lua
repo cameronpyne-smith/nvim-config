@@ -5,9 +5,9 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		build = function()
-			require("nvim-treesitter.install").update({ with_sync = true })()
-		end,
+		branch = "main",
+		lazy = false,
+		build = ":TSUpdate",
 	},
 
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
@@ -353,6 +353,7 @@ return {
 				"stylua", -- Used to format Lua code
 				"gofumpt",
 				"goimports",
+				"tree-sitter-cli", -- Used by nvim-treesitter (main) to build parsers
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -602,10 +603,6 @@ return {
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = { ensure_installed = { "svelte" } },
 	},
 	{
 		"neovim/nvim-lspconfig",
