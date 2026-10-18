@@ -456,6 +456,10 @@ return {
 					end,
 				},
 				completion = { completeopt = "menu,menuone,noinsert" },
+				window = {
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
+				},
 
 				-- For an understanding of why these mappings were
 				-- chosen, you will need to read `:help ins-completion`
@@ -533,6 +537,10 @@ return {
 		init = function()
 			require("tokyonight").setup({
 				transparent = true,
+				styles = {
+					sidebars = "transparent",
+					floats = "transparent",
+				},
 			})
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
